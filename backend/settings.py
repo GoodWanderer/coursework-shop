@@ -59,6 +59,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
     'http://localhost:3006',
+    'http://mozzarella181818.pythonanywhere.com'
 )
 
 ROOT_URLCONF = 'backend.urls'

@@ -6,6 +6,18 @@ admin.site.site_header = 'ShoeStore'
 from .models import Contacts, ContactsMe
 from .models import Faq
 from .models import Category, Product
+from .models import Slider
+from .models import Order, OrderProduct
+
+
+class OrderProductInline(admin.TabularInline): 
+  fk_name = 'order'
+  model = OrderProduct
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+  list_display = ('key', 'user', 'totalSum')
+  inlines = [OrderProductInline,]
 
 @admin.register(Contacts)
 class ContactsAdmin(admin.ModelAdmin):
@@ -27,3 +39,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'category', 'available', 'company', 'model', 'stock')
+
+@admin.register(Slider)
+class SliderAdmin(admin.ModelAdmin):
+    list_display = ('name', 'text')
